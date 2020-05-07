@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>Ecommers Project! | </title>
     
      <!-- Datatables -->
      <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -81,7 +81,7 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Category <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{route('categories')}}">Category</a></li>
+                      <li><a href="{{route('categorie')}}">Category</a></li>
                       <li><a href="{{route('subcategories')}}">Sub Category</a></li>
                       <li><a href="{{route('brands')}}">Brand</a></li>
                       
@@ -97,8 +97,8 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Products <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Add Product</a></li>
-                      <li><a href="tables_dynamic.html">All Product</a></li>
+                      <li><a href="{{route('addproducts')}}">Add Product</a></li>
+                      <li><a href="{{route('allproducts')}}">All Product</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Others <span class="fa fa-chevron-down"></span></a>

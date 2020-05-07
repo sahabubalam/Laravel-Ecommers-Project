@@ -18,12 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('admin/home','adminController@index');
+// Authentication
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-// admin section
+Route::get('/welcome', 'HomeController@index')->name('home');
+// Admin Section
 //category
-Route::get('admin/categories','admin\category\CategoryController@category')->name('categories');
+Route::get('admin/categories','admin\category\CategoryController@category')->name('categorie');
 Route::post('admin/store/category','admin\category\CategoryController@Storecategory')->name('store.category');
 Route::get('delete/category/{id}','admin\category\CategoryController@Deletecategory');
 Route::get('edit/category/{id}','admin\category\CategoryController@Editcategory');
@@ -46,7 +47,30 @@ Route::get('delete/subcategory/{id}','admin\subcategory\SubcategoryController@De
 Route::get('admin/addpost','admin\BlogPost\BlogpostController@Blogpost')->name('addposts');
 Route::get('admin/allpost','admin\BlogPost\BlogpostController@AllBlogpost')->name('allposts');
 Route::post('admin/store/blogposts','admin\BlogPost\BlogpostController@BlogpostStore')->name('store.blogposts');
+Route::get('delete/blogpost/{id}','admin\BlogPost\BlogpostController@DeleteBlogpost');
+Route::get('edit/blogpost/{id}','admin\BlogPost\BlogpostController@EditBlogpost');
+Route::post('update/blogpost/{id}','admin\BlogPost\BlogpostController@UpdateBlogpost');
 
 //products
+Route::get('admin/addproduct','admin\Product\ProductController@Product')->name('addproducts');
+Route::post('admin/store/product','admin\Product\ProductController@StoreProduct')->name('store.products');
+Route::get('admin/allproduct','admin\Product\ProductController@AllProduct')->name('allproducts');
+Route::get('edit/product/{id}','admin\Product\ProductController@EditProduct');
+Route::post('update/product/{id}','admin\Product\ProductController@UpdateProduct');
+Route::get('delete/product/{id}','admin\Product\ProductController@DeleteProduct');
+
+//Frontend Section
+//Category
+Route::get('user/profile/','Frontend\Product\ProductController@UserProfile')->name('profile');
+Route::get('front/category/','Frontend\Category\CategoryController@Category')->name('categories');
+//Route::get('show/category/{id}','Frontend\Category\CategoryController@ShowCategory');
+
+//Product
+Route::get('front/product/{id}','Frontend\Product\ProductController@Product');
+//Cart
+Route::get('front/cart/{id}','Frontend\Product\ProductController@CartProduct');
+
+
+
 
 
