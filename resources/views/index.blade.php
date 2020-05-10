@@ -27,7 +27,10 @@
 </head>
    @php
     $category=DB::table('categories')->get();
-    @endphp
+   @endphp
+
+  
+    
     
 <body>
 <header>
@@ -167,7 +170,9 @@
                                     </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="{{URL::to('showcart')}}"><i class="fas fa-shopping-cart">
+                                           
+                                            </i></a>
                                         </div>
                                     </li>
                                   <!--

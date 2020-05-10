@@ -45,6 +45,15 @@ class ProductController extends Controller
         $cart=DB::table('products')->where('id',$id)->get();
         return view('frontend.cart.cart',compact('cart'));
     }
+    //show cart product
+
+    public function ShowCartProduct()
+    {
+        return view('frontend.cart.show_cart_product.blade.php');
+    }
+
+  
+   
    
     
 }

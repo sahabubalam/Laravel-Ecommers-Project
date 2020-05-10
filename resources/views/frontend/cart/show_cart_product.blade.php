@@ -21,29 +21,36 @@
   <!-- slider Area End-->
 
   <!--================Cart Area =================-->
-  <section class="cart_area section_padding">
+
     <div class="container">
+    
       <div class="cart_inner">
+      <div class="row">
+        <div class="col-sm-12">
         <div class="table-responsive">
-          <table class="table">
+      
+          <table class="table ">
             <thead>
               <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
+                <th >Product</th>
+                <th >Price</th>
+                <th >Quantity</th>
+                <th>Total</th>
               </tr>
             </thead>
+           
             <tbody>
-              <tr>
-              @foreach($cart as $row)
+            <tr>
+            <h1 hidden>{{$sum=0}}</h1>
+            @foreach($content as $row)
+              
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="{{URL::to($row->product_image)}}" alt="" />
+                      <img src="{{$row->options->image}}" alt="" />
                     </div>
                     <div class="media-body">
-                      <p>{{$row->product_name}}</p>
+                      <p>{{$row->name}}</p>
                     </div>
                   </div>
                 </td>
@@ -51,34 +58,19 @@
                   <h5>${{$row->price}}</h5>
                 </td>
                 <td>
-                <form method="post" action="{{URL::to('cart/product/'.$row->id)}}">
                   <div class="product_count">
-                  @csrf
-                    <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="number" name="product_quantity" value="1" min="0" max="10">
-                    <input class="input-number" type="hidden" name="id" value="{{$row->id}}">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                  <div>
-                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                      <h5>{{$row->qty}}</h5>
                   </div>
                 </td>
                 <td>
-                  <h5>${{$row->price}}</h5>
+                  <h5>${{$row->price*$row->qty}}</h5>
+                  @php
+                  Session::put(['total'=>$row->price*$row->qty]);
+                  @endphp
                 </td>
-                @endforeach
               </tr>
-             
+              <h1 hidden>{{$sum =$sum+$row->price}}</h1>
+              @endforeach
               <tr class="bottom_button">
                 <td>
                   <a class="btn_1" href="#">Update Cart</a>
@@ -87,26 +79,29 @@
                 <td></td>
                 <td>
                   <div class="cupon_text float-right">
-                    <a class="btn_1" href="#">Close Coupon</a>
+                    <a class="btn_1" href="{{route('cart.shipping')}}">Checkout</a>
                   </div>
                 </td>
               </tr>
               <tr>
+             
                 <td></td>
                 <td></td>
                 <td>
                   <h5>Subtotal</h5>
                 </td>
                 <td>
-                  <h5>$2160.00</h5>
+                  <h5>${{$sum}}</h5>
                 </td>
               </tr>
+           
               <tr class="shipping_area">
                 <td></td>
                 <td></td>
                 <td>
                   <h5>Shipping</h5>
                 </td>
+                <td></td>
                 <td>
                   <div class="shipping_box">
                     <ul class="list">
@@ -147,14 +142,17 @@
                 </td>
               </tr>
             </tbody>
+          
           </table>
-          <div class="checkout_btn_inner float-right">
-            <a class="btn_1" href="#">Continue Shopping</a>
-            <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
-          </div>
+         
+          
         </div>
       </div>
-  </section>
+      </div>
+      </div>
+      </div>
+
+  
   <!--================End Cart Area =================-->
 
 <footer>

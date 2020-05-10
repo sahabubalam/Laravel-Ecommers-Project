@@ -69,6 +69,18 @@ Route::get('front/category/','Frontend\Category\CategoryController@Category')->n
 Route::get('front/product/{id}','Frontend\Product\ProductController@Product');
 //Cart
 Route::get('front/cart/{id}','Frontend\Product\ProductController@CartProduct');
+Route::post('cart/product/{id}','Frontend\Cart\CartController@AddCart');
+Route::get('showcart','Frontend\Cart\CartController@showcart')->name('cart.product');
+Route::get('user/view','Frontend\Cart\CartController@Cartshipping')->name('cart.shipping');
+Route::post('cart/shipping','Frontend\Cart\CartController@shippingUser')->name('shipping');
+//payment
+
+Route::get('checkout/payment','Frontend\Cart\CartController@shippingPayment');
+
+//confirm order
+
+Route::post('confirm/order','Frontend\Cart\CartController@ConfirmOrder')->name('confirm.order');
+
 
 
 

@@ -85,6 +85,9 @@
     $category=DB::table('categories')->get();
     @endphp
     -->
+    @php
+    $content=Cart::content();
+    @endphp
 
 
 
@@ -134,7 +137,7 @@
                                       
                                        <li><a href="product_list.html">Wish List  </a></li>
                                        <li><a href="cart.html">Shopping</a></li>
-                                       <li><a href="cart.html">Cart</a></li>
+                                       <li><a href="">Cart</a></li>
                                        <li><a href="checkout.html">Checkout</a></li>
                                        
                                        <li>
@@ -238,7 +241,11 @@
                                     </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="{{route('cart.product')}}">
+                                           <i class="fas fa-shopping-cart" ></i> 
+                                          
+                                            
+                                            </a>
                                         </div>
                                     </li>
                                   <!--
